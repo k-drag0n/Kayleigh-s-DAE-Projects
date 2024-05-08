@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://cw4fqd3e43q34"]
+
+[ext_resource type="Texture2D" uid="uid://cqs11sdwswfbq" path="res://icon.svg" id="1_04jj1"]
+[ext_resource type="Texture2D" uid="uid://c1tycd6nskvuy" path="res://IMG_4560.jpg" id="1_lfir6"]
+[ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_yrovm"]
+[ext_resource type="Script" path="res://GodotImage.gd" id="2_hfedi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7qy5n"]
+radius = 78.1025
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t5edi"]
+size = Vector2(2588.04, 2151.63)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rjs4j"]
+size = Vector2(2546.88, 2145.3)
+
+[node name="MainLevel" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("1_yrovm")
+
+[node name="GodotImage" type="Sprite2D" parent="CharacterBody2D"]
+texture = ExtResource("1_04jj1")
+script = ExtResource("2_hfedi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CircleShape2D_7qy5n")
+
+[node name="CrochetCatImage" type="Sprite2D" parent="."]
+position = Vector2(103, 580)
+scale = Vector2(0.0985301, 0.0985301)
+texture = ExtResource("1_lfir6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CrochetCatImage"]
+position = Vector2(-15.2239, -10.1489)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_t5edi")
+
+[node name="CrochetCatImage2" type="Sprite2D" parent="."]
+position = Vector2(352, 545)
+scale = Vector2(0.0946256, 0.0946256)
+texture = ExtResource("1_lfir6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CrochetCatImage2"]
+position = Vector2(-5.28442, -15.8521)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_rjs4j")

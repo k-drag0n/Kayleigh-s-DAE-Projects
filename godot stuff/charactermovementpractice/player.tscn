@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdllcokl3radp"]
+
+[ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_3ertd"]
+[ext_resource type="Texture2D" uid="uid://cqs11sdwswfbq" path="res://icon.svg" id="2_tygru"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7vh5w"]
+radius = 78.1025
+
+[node name="Player" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("1_3ertd")
+
+[node name="GodotImage" type="Sprite2D" parent="CharacterBody2D"]
+texture = ExtResource("2_tygru")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CircleShape2D_7vh5w")
