@@ -1,11 +1,76 @@
-[gd_scene load_steps=7 format=3 uid="uid://c5riyj1v6s478"]
+[gd_scene load_steps=17 format=3 uid="uid://c5riyj1v6s478"]
 
 [ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_rf0ry"]
 [ext_resource type="Texture2D" uid="uid://di5ifh2tsf0aa" path="res://RylieIdle.PNG" id="2_gbalq"]
 [ext_resource type="Texture2D" uid="uid://c7ldqg3l4u2jw" path="res://PTV TESTING TILEMAP.PNG" id="3_1tcxt"]
+[ext_resource type="Texture2D" uid="uid://bmqdj033ctxim" path="res://RyleWalkCycle+Idle.PNG" id="3_68d7i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5eutg"]
-size = Vector2(45, 67)
+size = Vector2(52, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lfqq3"]
+atlas = ExtResource("3_68d7i")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pkxrc"]
+atlas = ExtResource("3_68d7i")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8t48l"]
+atlas = ExtResource("3_68d7i")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r2ef8"]
+atlas = ExtResource("3_68d7i")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ryug5"]
+atlas = ExtResource("3_68d7i")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fva0g"]
+atlas = ExtResource("3_68d7i")
+region = Rect2(600, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_slhrd"]
+atlas = ExtResource("3_68d7i")
+region = Rect2(700, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ovndn"]
+atlas = ExtResource("3_68d7i")
+region = Rect2(800, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e73rn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lfqq3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pkxrc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8t48l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r2ef8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ryug5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fva0g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_slhrd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ovndn")
+}],
+"loop": true,
+"name": &"walk cycle (right)",
+"speed": 12.0
+}]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nxqn1"]
 resource_name = "1 Initial testing map"
@@ -124,20 +189,24 @@ position = Vector2(-6, 5)
 script = ExtResource("1_rf0ry")
 
 [node name="Sprite2D" type="Sprite2D" parent="mainchar"]
+visible = false
 position = Vector2(9.53674e-07, 0)
 scale = Vector2(0.833855, 0.833856)
 texture = ExtResource("2_gbalq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="mainchar"]
-visible = false
-position = Vector2(0.5, 0)
+position = Vector2(10, 10)
 shape = SubResource("RectangleShape2D_5eutg")
 
 [node name="Camera2D" type="Camera2D" parent="mainchar"]
 zoom = Vector2(3, 3)
 position_smoothing_enabled = true
+position_smoothing_speed = 2.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="mainchar"]
+sprite_frames = SubResource("SpriteFrames_e73rn")
+animation = &"walk cycle (right)"
+frame_progress = 0.508654
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_o3ve2")

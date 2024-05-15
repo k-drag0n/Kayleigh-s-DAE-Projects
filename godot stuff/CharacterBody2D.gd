@@ -11,7 +11,7 @@ const GRAVITY = 600
 @export var jumps_made = 0
 @export var doublejumpstrength :=  -250.0
 
-
+@onready var _animated_sprite = $AnimatedSprite2D
 
 
 var _jumpsmade := 0
@@ -32,11 +32,16 @@ func _physics_process(delta):
 	if Input.is_action_pressed("left"):
 		velocity.x = -speed
 		move_and_slide()
+		
 	elif Input.is_action_pressed("right"):
 		velocity.x = speed
 		move_and_slide()
+		
+		_animated_sprite.play("walk cycle (right)")
 	else:
 		velocity.x = 0.0
+		
+		_animated_sprite.stop
 	
 			
 	if Input.is_action_just_pressed("jump"):
