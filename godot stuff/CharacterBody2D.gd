@@ -4,7 +4,7 @@ extends CharacterBody2D
 const UPDIR = Vector2.UP
 const GRAVITY = 600
 
-@export var speed = 200.0
+@export var speed = 180.0
 
 @export var jumpstrength := -300.0
 @export var maxjumps := 2
@@ -33,26 +33,20 @@ func _physics_process(delta):
 		velocity.x = -speed
 		move_and_slide()
 		
+		_animated_sprite.play("RyliewalkcycleLeft")
+		
 	elif Input.is_action_pressed("right"):
 		velocity.x = speed
 		move_and_slide()
 		
-		_animated_sprite.play("walk cycle (right)")
+		_animated_sprite.play("RyliewalkcycleRight")
+		
 	else:
 		velocity.x = 0.0
-		
-		_animated_sprite.stop
+		_animated_sprite.play("RylieIdle")
 	
-			
-	if Input.is_action_just_pressed("jump"):
-		if is_falling:
-			print("double jumped")
-			velocity.y = doublejumpstrength
-		else:
-			velocity.y = jumpstrength
-			print("jumped")
-			jumps_made = 1 + jumps_made
 
-
-	if Input.is_action_just_pressed("jump"):
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		velocity.y = jumpstrength
 		print(jumps_made)
+		print ("jumped")

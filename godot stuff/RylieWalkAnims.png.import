@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmqdj033ctxim"
-path="res://.godot/imported/RyleWalkCycle+Idle.PNG-cd56ad3981b6bc700df3294ef206f8f9.ctex"
+uid="uid://d37wp4mqoi4re"
+path="res://.godot/imported/RylieWalkAnims.png-684696ad3cdf938d47ac2874f9facb9c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://RyleWalkCycle+Idle.PNG"
-dest_files=["res://.godot/imported/RyleWalkCycle+Idle.PNG-cd56ad3981b6bc700df3294ef206f8f9.ctex"]
+source_file="res://RylieWalkAnims.png"
+dest_files=["res://.godot/imported/RylieWalkAnims.png-684696ad3cdf938d47ac2874f9facb9c.ctex"]
 
 [params]
 
