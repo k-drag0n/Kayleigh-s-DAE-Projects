@@ -6,10 +6,10 @@ const GRAVITY = 600
 
 @export var speed = 180.0
 
-@export var jumpstrength := -300.0
+@export var jumpstrength := -280.0
 @export var maxjumps := 2
 @export var jumps_made = 0
-@export var doublejumpstrength :=  -250.0
+@export var doublejumpstrength :=  -200.0
 
 @onready var _animated_sprite = $AnimatedSprite2D
 
@@ -45,8 +45,19 @@ func _physics_process(delta):
 		velocity.x = 0.0
 		_animated_sprite.play("RylieIdle")
 	
-
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = jumpstrength
-		print(jumps_made)
-		print ("jumped")
+	if is_on_floor():
+		jumps_made = 0
+	
+	if Input.is_action_just_pressed("jump"):
+		if is_on_floor():
+			velocity.y = jumpstrength
+			print(jumps_made)
+			print ("jumped")
+			jumps_made = jumps_made + 1
+		elif not is_on_floor():
+			if jumps_made == 1:
+				velocity.y = doublejumpstrength
+				jumps_made = jumps_made + 1
+			else:
+				velocity.y = velocity.y
+				pass
