@@ -1,6 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://cyg0dlxmmmbt8"]
+[gd_scene load_steps=5 format=3 uid="uid://cyg0dlxmmmbt8"]
 
 [ext_resource type="Script" path="res://Main_menu(title).gd" id="1_6y1ug"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qlh18"]
+bg_color = Color(0.87451, 0.678431, 0.172549, 1)
+skew = Vector2(1.5, 0)
+
+[sub_resource type="Theme" id="Theme_vtwrg"]
+Button/styles/normal = SubResource("StyleBoxFlat_qlh18")
+
+[sub_resource type="Theme" id="Theme_nrsoi"]
 
 [node name="Main_menu(title)" type="Control"]
 layout_mode = 3
@@ -26,27 +35,40 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 12
-theme_override_constants/margin_top = 12
-theme_override_constants/margin_right = 12
-theme_override_constants/margin_bottom = 12
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_vtwrg")
 theme_override_constants/separation = 50
+alignment = 1
 
-[node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "PLAY"
-
-[node name="Seperator" type="Control" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Part-Time Vigilantes"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_button_pressed"]
+[node name="Play_button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_nrsoi")
+text = "PLAY"
+
+[node name="Exit" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "EXIT"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[connection signal="button_down" from="MarginContainer/HBoxContainer/VBoxContainer/Play_button" to="." method="_on_play_button_button_down"]
+[connection signal="button_down" from="MarginContainer/HBoxContainer/VBoxContainer/Exit" to="." method="_on_exit_button_down"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Exit" to="." method="_on_button_pressed"]
