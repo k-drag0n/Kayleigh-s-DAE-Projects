@@ -6,6 +6,7 @@ const GRAVITY = 600
 
 @export var speed = 180.0
 
+
 @export var jumpstrength := -280.0
 @export var maxjumps := 2
 @export var jumps_made = 0
@@ -17,8 +18,28 @@ const GRAVITY = 600
 var _jumpsmade := 0
 var _velocity := Vector2.ZERO
 
+@onready var dash_timer = $dash_timer
+var dodash = false
+var dashDir : int
+
 
 func _physics_process(delta):
+	
+	
+	if Input.is_action_just_pressed("shift"):
+		if Input.is_action_just_pressed("left"):
+			dashDir = -1
+		elif Input.is_action_just_pressed("right"):
+			dashDir = 1
+		
+		dodash = true
+		dash_timer.start()
+
+	if dodash:
+		velocity.x = dashDir * speed * 3
+		print("dashed")
+		print(dashDir)
+		
 	
 	var is_falling = _velocity.y > 0.0 and not is_on_floor()
 	var is_jumping = Input.is_action_just_pressed("jump") and is_on_floor()

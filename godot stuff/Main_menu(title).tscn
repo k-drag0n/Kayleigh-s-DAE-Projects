@@ -1,15 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://cyg0dlxmmmbt8"]
+[gd_scene load_steps=7 format=3 uid="uid://cyg0dlxmmmbt8"]
 
 [ext_resource type="Script" path="res://Main_menu(title).gd" id="1_6y1ug"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_54k0m"]
+bg_color = Color(0.282353, 0.698039, 0.541176, 1)
+skew = Vector2(1.5, 0.05)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qlh18"]
 bg_color = Color(0.87451, 0.678431, 0.172549, 1)
 skew = Vector2(1.5, 0)
 
 [sub_resource type="Theme" id="Theme_vtwrg"]
+Button/styles/hover = SubResource("StyleBoxFlat_54k0m")
 Button/styles/normal = SubResource("StyleBoxFlat_qlh18")
 
 [sub_resource type="Theme" id="Theme_nrsoi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8cs8x"]
+bg_color = Color(0.784314, 0.368627, 0.458824, 1)
+skew = Vector2(2, -0.05)
 
 [node name="Main_menu(title)" type="Control"]
 layout_mode = 3
@@ -64,6 +73,7 @@ text = "PLAY"
 
 [node name="Exit" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_8cs8x")
 text = "EXIT"
 
 [node name="Camera2D" type="Camera2D" parent="."]

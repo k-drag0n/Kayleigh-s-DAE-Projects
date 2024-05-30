@@ -177,6 +177,10 @@ animation = &"RyliewalkcycleLeft"
 frame = 4
 frame_progress = 0.685473
 
+[node name="dash_timer" type="Timer" parent="mainchar"]
+wait_time = 0.4
+one_shot = true
+
 [node name="TileMap" type="TileMap" parent="."]
 visible = false
 tile_set = SubResource("TileSet_o3ve2")
